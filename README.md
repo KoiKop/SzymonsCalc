@@ -1,1 +1,3 @@
 # SzymonsCalc
+
+My first calc
