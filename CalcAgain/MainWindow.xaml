@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalcAgain"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="450" Width="380
+        ">
+    <Grid Height="421" VerticalAlignment="Top">
+        <Button x:Name="ButtonPlusMinus" Content="+/-" HorizontalAlignment="Left" Height="40" Margin="12,353,0,0" VerticalAlignment="Top" Width="80" Click="ButtonPlusMinus_Click"/>
+        <Button x:Name="ButtonValue0" Content="0" HorizontalAlignment="Left" Height="40" Margin="97,353,0,0" VerticalAlignment="Top" Width="80" Click="ButtonValue0_Click"/>
+        <Button x:Name="ButtonComma" Content="," HorizontalAlignment="Left" Height="40" Margin="182,353,0,0" VerticalAlignment="Top" Width="80" Click="ButtonComma_Click"/>
+        <Button x:Name="ButtonResult" Content="=" HorizontalAlignment="Left" Height="40" Margin="267,353,0,0" VerticalAlignment="Top" Width="80" Click="ButtonResult_Click"/>
+        <Button x:Name="ButtonValue1" Content="1" HorizontalAlignment="Left" Height="40" Margin="12,308,0,0" VerticalAlignment="Top" Width="80" Click="ButtonValue1_Click"/>
+        <Button x:Name="ButtonValue2" Content="2" HorizontalAlignment="Left" Height="40" Margin="97,308,0,0" VerticalAlignment="Top" Width="80" Click="ButtonValue2_Click"/>
+        <Button x:Name="ButtonValue3" Content="3" HorizontalAlignment="Left" Height="40" Margin="182,308,0,0" VerticalAlignment="Top" Width="80" Click="ButtonValue3_Click"/>
+        <Button x:Name="ButtonAdd" Content="+" HorizontalAlignment="Left" Height="40" Margin="267,308,0,0" VerticalAlignment="Top" Width="80" Click="ButtonAdd_Click"/>
+        <Button x:Name="ButtonValue4" Content="4" HorizontalAlignment="Left" Height="40" Margin="12,263,0,0" VerticalAlignment="Top" Width="80" Click="ButtonValue4_Click"/>
+        <Button x:Name="ButtonValue5" Content="5" HorizontalAlignment="Left" Height="40" Margin="97,263,0,0" VerticalAlignment="Top" Width="80" Click="ButtonValue5_Click"/>
+        <Button x:Name="ButtonValue6" Content="6" HorizontalAlignment="Left" Height="40" Margin="182,263,0,0" VerticalAlignment="Top" Width="80" Click="ButtonValue6_Click"/>
+        <Button x:Name="ButtonExtract" Content="-" HorizontalAlignment="Left" Height="40" Margin="267,263,0,0" VerticalAlignment="Top" Width="80" Click="ButtonExtract_Click"/>
+        <Button x:Name="ButtonValue7" Content="7" HorizontalAlignment="Left" Height="40" Margin="12,218,0,0" VerticalAlignment="Top" Width="80" Click="ButtonValue7_Click"/>
+        <Button x:Name="ButtonValue8" Content="8" HorizontalAlignment="Left" Height="40" Margin="97,218,0,0" VerticalAlignment="Top" Width="80" Click="ButtonValue8_Click"/>
+        <Button x:Name="ButtonValue9" Content="9" HorizontalAlignment="Left" Height="40" Margin="182,218,0,0" VerticalAlignment="Top" Width="80" Click="ButtonValue9_Click"/>
+        <Button x:Name="ButtonMultiple" Content="x" HorizontalAlignment="Left" Height="40" Margin="267,218,0,0" VerticalAlignment="Top" Width="80" Click="ButtonMultiple_Click"/>
+        <Button x:Name="ButtonCancel" Content="CE" HorizontalAlignment="Left" Height="40" Margin="12,173,0,0" VerticalAlignment="Top" Width="80" Click="ButtonCancel_Click"/>
+        <Button x:Name="DunnoYet" Content="?" Height="40" Margin="97,173,180,0" VerticalAlignment="Top"/>
+        <Button x:Name="ButtonBackspace" Content="&lt;=" HorizontalAlignment="Left" Height="40" Margin="182,173,0,0" VerticalAlignment="Top" Width="80" Click="ButtonBackspace_Click"/>
+        <Button x:Name="ButtonDivide" Content="/" HorizontalAlignment="Left" Height="40" Margin="267,173,0,0" VerticalAlignment="Top" Width="80" Click="ButtonDivide_Click"/>
+        <Label x:Name="MainDisplay" Content="Label" HorizontalAlignment="Left" Height="90" Margin="12,38,0,0" VerticalAlignment="Top" Width="335" Background="#FFD1D1D9" BorderBrush="#FF252528" FontSize="22"/>
+
     </Grid>
 </Window>
