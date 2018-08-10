@@ -25,7 +25,7 @@
         <Button x:Name="ButtonValue9" Content="9" HorizontalAlignment="Left" Height="40" Margin="182,218,0,0" VerticalAlignment="Top" Width="80" Click="ButtonValue9_Click"/>
         <Button x:Name="ButtonMultiple" Content="x" HorizontalAlignment="Left" Height="40" Margin="267,218,0,0" VerticalAlignment="Top" Width="80" Click="ButtonMultiple_Click"/>
         <Button x:Name="ButtonCancel" Content="CE" HorizontalAlignment="Left" Height="40" Margin="12,173,0,0" VerticalAlignment="Top" Width="80" Click="ButtonCancel_Click"/>
-        <Button x:Name="DunnoYet" Content="?" Height="40" Margin="97,173,180,0" VerticalAlignment="Top"/>
+        <Button x:Name="DunnoYet" Content="?" Height="40" Margin="97,173,190,0" VerticalAlignment="Top"/>
         <Button x:Name="ButtonBackspace" Content="&lt;=" HorizontalAlignment="Left" Height="40" Margin="182,173,0,0" VerticalAlignment="Top" Width="80" Click="ButtonBackspace_Click"/>
         <Button x:Name="ButtonDivide" Content="/" HorizontalAlignment="Left" Height="40" Margin="267,173,0,0" VerticalAlignment="Top" Width="80" Click="ButtonDivide_Click"/>
         <Label x:Name="MainDisplay" Content="Label" HorizontalAlignment="Left" Height="90" Margin="12,38,0,0" VerticalAlignment="Top" Width="335" Background="#FFD1D1D9" BorderBrush="#FF252528" FontSize="22"/>
