@@ -111,7 +111,14 @@ namespace CalcAgain
         {
             ValueUpdater();
             var result = calculations.Calculate(action, lValue, rValue);
-            MainDisplay.Content = result.ToString();
+            if (double.IsInfinity(result))
+            {
+                MainDisplay.Content = "Oh! You can't divide by 0!";
+                action = Action.Initial;
+            }
+            else
+                MainDisplay.Content = result.ToString();
+
             inputReader.ClearInput();
             lValue = result;
         }
@@ -128,15 +135,6 @@ namespace CalcAgain
             MainDisplay.Content = inputReader.DeleteLastCharacter();
         }
 
-        //private void Cancel()
-        //{
-        //    action = Action.Initial;
-        //    leftValueDouble = 0;
-        //    rightValueDouble = 0;
-        //    input = string.Empty;
-        //    nie wiem
-        //}
-
         private void ValueUpdater()
         {
             if (action == Action.Initial)
@@ -145,9 +143,7 @@ namespace CalcAgain
                 inputReader.ClearInput();
             }
             else
-            {
-                rValue = Convert.ToDouble(inputReader.Input);
-            }  
+                rValue = Convert.ToDouble(inputReader.Input);  
         }
 
 
