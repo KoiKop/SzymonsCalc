@@ -8,7 +8,13 @@ namespace CalcAgain
 {
     public class Calculations
     {
-        public double Calculate(Action action, double lValue, double rValue)
+        InputOperations inputOperations = new InputOperations();
+
+        double lValue = 
+
+
+
+        public double Calculate()
         {
             switch (action)
             {
@@ -27,5 +33,7 @@ namespace CalcAgain
             }
             return lValue;
         }
+
+
     }
 }

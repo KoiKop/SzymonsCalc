@@ -55,7 +55,7 @@ namespace CalcAgain
             }
             return Input;
         }
-        
+
         public string ClearInput()
         {
             Input = "0";

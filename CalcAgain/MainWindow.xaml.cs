@@ -11,10 +11,12 @@ namespace CalcAgain
     {
         InputReader inputReader = new InputReader();
         Calculations calculations = new Calculations();
+        InputOperations inputOperations = new InputOperations();
 
-        private double lValue;
-        private double rValue;
-        Action action = Action.Initial;
+
+        //private double lValue;
+        //private double rValue;
+        //Action action = Action.Initial;
 
 
         public MainWindow()
@@ -85,32 +87,33 @@ namespace CalcAgain
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            ValueUpdater();
-            action = Action.Add;
+           inputOperations.ValueUpdater();
+           inputOperations.SetAction(Action.Add);
         }
 
         private void ButtonExtract_Click(object sender, RoutedEventArgs e)
         {
-            ValueUpdater();
-            action = Action.Extract;
+            inputOperations.ValueUpdater();
+            inputOperations.SetAction(Action.Extract);
         }
 
         private void ButtonMultiple_Click(object sender, RoutedEventArgs e)
         {
-            ValueUpdater();
-            action = Action.Multiple;
+            inputOperations.ValueUpdater();
+            inputOperations.SetAction(Action.Multiple);
         }
 
         private void ButtonDivide_Click(object sender, RoutedEventArgs e)
         {
-            ValueUpdater();
-            action = Action.Divide;
+            inputOperations.ValueUpdater();
+            inputOperations.SetAction(Action.Divide);
         }
 
         private void ButtonResult_Click(object sender, RoutedEventArgs e)
         {
-            ValueUpdater();
+            inputOperations.ValueUpdater();
             var result = calculations.Calculate(action, lValue, rValue);
+
             if (double.IsInfinity(result))
             {
                 MainDisplay.Content = "Oh! You can't divide by 0!";
@@ -135,20 +138,17 @@ namespace CalcAgain
             MainDisplay.Content = inputReader.DeleteLastCharacter();
         }
 
-        private void ValueUpdater()
-        {
-            if (action == Action.Initial)
-            {
-                lValue = Convert.ToDouble(inputReader.Input);
-                inputReader.ClearInput();
-            }
-            else
-                rValue = Convert.ToDouble(inputReader.Input);  
-        }
-
-
-
-
-
+        // To delete
+        //public void ValueUpdater()
+        //{
+        //    if (action == Action.Initial)
+        //    {
+        //        lValue = Convert.ToDouble(inputReader.Input);
+        //        inputReader.ClearInput();
+        //    }
+        //    else
+        //        rValue = Convert.ToDouble(inputReader.Input);
+        //}
+        // end
     }
 }
