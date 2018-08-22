@@ -8,32 +8,41 @@ namespace CalcAgain
 {
     public class Calculations
     {
-        InputOperations inputOperations = new InputOperations();
-
-        double lValue = 
-
-
-
-        public double Calculate()
+        public string Calculate(InputStorage input)
         {
-            switch (action)
+            string validationMessage = Validate(input.Action, input.RValue);
+
+            if (String.IsNullOrEmpty(validationMessage))
             {
-                case Action.Add:
-                    lValue += rValue;
-                    break;
-                case Action.Extract:
-                    lValue = lValue - rValue;
-                    break;
-                case Action.Multiple:
-                    lValue = lValue * rValue;
-                    break;
-                case Action.Divide:
-                        lValue = lValue / rValue;
-                    break;
+                switch (input.Action)
+                {
+                    case Action.Add:
+                        input.LValue += input.RValue;
+                        break;
+                    case Action.Extract:
+                        input.LValue = input.LValue - input.RValue;
+                        break;
+                    case Action.Multiple:
+                        input.LValue = input.LValue * input.RValue;
+                        break;
+                    case Action.Divide:
+                        input.LValue = input.LValue / input.RValue;
+                        break;
+                }
+                return input.LValue.ToString();
             }
-            return lValue;
+            else
+            {
+                return validationMessage;
+            }
         }
 
-
+        private string Validate(Action action, double rValue)
+        {
+            if (action == Action.Divide && rValue == 0)
+                return "Oh! You can't divide by 0!";
+            else
+                return null;
+        }
     }
 }

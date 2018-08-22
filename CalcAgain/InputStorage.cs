@@ -6,21 +6,18 @@ using System.Threading.Tasks;
 
 namespace CalcAgain
 {
-    public class InputOperations
+    public class InputStorage
     {
         public double LValue { get; set; }
         public double RValue { get; set; }
         public Action Action { get; set; }
 
-        InputOperations()
+        public InputStorage()
         {
             Action = Action.Initial;
         }
-        
 
-        InputReader inputReader = new InputReader();
-
-        public void ValueUpdater()
+        public void StoreValue(InputReader inputReader)
         {
             if (Action == Action.Initial)
             {

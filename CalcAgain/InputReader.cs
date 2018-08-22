@@ -7,11 +7,15 @@ using System.Threading.Tasks;
 
 namespace CalcAgain
 {
+    public static class Configuration
+    {
+        public static  string DecimalSeparator = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+    }
+
     public class InputReader
     {
         public string Input { get; set; }
 
-        private readonly string _separator = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator;
 
         public InputReader()
         {
@@ -29,8 +33,8 @@ namespace CalcAgain
  
         public string AddCommaToInput()
         {
-            if (!Input.Contains(_separator))
-                return UpdateInput(_separator);
+            if (!Input.Contains(Configuration.DecimalSeparator))
+                return UpdateInput(Configuration.DecimalSeparator);
             else
                 return Input;
         }

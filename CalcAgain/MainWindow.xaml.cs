@@ -11,7 +11,7 @@ namespace CalcAgain
     {
         InputReader inputReader = new InputReader();
         Calculations calculations = new Calculations();
-        InputOperations inputOperations = new InputOperations();
+        InputStorage inputStorage = new InputStorage();
 
 
         //private double lValue;
@@ -87,48 +87,38 @@ namespace CalcAgain
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-           inputOperations.ValueUpdater();
-           inputOperations.SetAction(Action.Add);
+           inputStorage.StoreValue(inputReader);
+           inputStorage.SetAction(Action.Add);
         }
 
         private void ButtonExtract_Click(object sender, RoutedEventArgs e)
         {
-            inputOperations.ValueUpdater();
-            inputOperations.SetAction(Action.Extract);
+            inputStorage.StoreValue(inputReader);
+            inputStorage.SetAction(Action.Extract);
         }
 
         private void ButtonMultiple_Click(object sender, RoutedEventArgs e)
         {
-            inputOperations.ValueUpdater();
-            inputOperations.SetAction(Action.Multiple);
+            inputStorage.StoreValue(inputReader);
+            inputStorage.SetAction(Action.Multiple);
         }
 
         private void ButtonDivide_Click(object sender, RoutedEventArgs e)
         {
-            inputOperations.ValueUpdater();
-            inputOperations.SetAction(Action.Divide);
+            inputStorage.StoreValue(inputReader);
+            inputStorage.SetAction(Action.Divide);
         }
 
         private void ButtonResult_Click(object sender, RoutedEventArgs e)
         {
-            inputOperations.ValueUpdater();
-            var result = calculations.Calculate(action, lValue, rValue);
-
-            if (double.IsInfinity(result))
-            {
-                MainDisplay.Content = "Oh! You can't divide by 0!";
-                action = Action.Initial;
-            }
-            else
-                MainDisplay.Content = result.ToString();
-
+            inputStorage.StoreValue(inputReader);            
+            MainDisplay.Content = calculations.Calculate(inputStorage);
             inputReader.ClearInput();
-            lValue = result;
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
-            action = Action.Initial;
+            inputStorage.SetAction(Action.Initial);
             inputReader.ClearInput();
             MainDisplay.Content = inputReader.Input;
         }
@@ -137,18 +127,5 @@ namespace CalcAgain
         {
             MainDisplay.Content = inputReader.DeleteLastCharacter();
         }
-
-        // To delete
-        //public void ValueUpdater()
-        //{
-        //    if (action == Action.Initial)
-        //    {
-        //        lValue = Convert.ToDouble(inputReader.Input);
-        //        inputReader.ClearInput();
-        //    }
-        //    else
-        //        rValue = Convert.ToDouble(inputReader.Input);
-        //}
-        // end
     }
 }
