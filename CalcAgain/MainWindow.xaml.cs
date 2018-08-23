@@ -13,12 +13,6 @@ namespace CalcAgain
         Calculations calculations = new Calculations();
         InputStorage inputStorage = new InputStorage();
 
-
-        //private double lValue;
-        //private double rValue;
-        //Action action = Action.Initial;
-
-
         public MainWindow()
         {
             InitializeComponent();

@@ -12,29 +12,27 @@ namespace CalcAgain
         {
             string validationMessage = Validate(input.Action, input.RValue);
 
-            if (String.IsNullOrEmpty(validationMessage))
-            {
-                switch (input.Action)
-                {
-                    case Action.Add:
-                        input.LValue += input.RValue;
-                        break;
-                    case Action.Extract:
-                        input.LValue = input.LValue - input.RValue;
-                        break;
-                    case Action.Multiple:
-                        input.LValue = input.LValue * input.RValue;
-                        break;
-                    case Action.Divide:
-                        input.LValue = input.LValue / input.RValue;
-                        break;
-                }
-                return input.LValue.ToString();
-            }
-            else
+            if (!string.IsNullOrEmpty(validationMessage))
             {
                 return validationMessage;
             }
+
+            switch (input.Action)
+            {
+                case Action.Add:
+                    input.LValue += input.RValue;
+                    break;
+                case Action.Extract:
+                    input.LValue = input.LValue - input.RValue;
+                    break;
+                case Action.Multiple:
+                    input.LValue = input.LValue * input.RValue;
+                    break;
+                case Action.Divide:
+                    input.LValue = input.LValue / input.RValue;
+                    break;
+            }
+            return input.LValue.ToString();
         }
 
         private string Validate(Action action, double rValue)

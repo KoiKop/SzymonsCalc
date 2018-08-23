@@ -2,16 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace CalcAgain
 {
-    public static class Configuration
-    {
-        public static  string DecimalSeparator = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator;
-    }
-
     public class InputReader
     {
         public string Input { get; set; }
@@ -25,10 +19,14 @@ namespace CalcAgain
         public string UpdateInput(string input)
         {
             Input += input;
+            TrimFirstZero(Input);
+            return Input;
+        }
+
+        private void TrimFirstZero(string input)
+        {
             if (Input.Length >= 2 && Input[0] == '0')
                 Input = Input.Remove(0, 1);
-
-            return Input;
         }
  
         public string AddCommaToInput()
@@ -65,9 +63,5 @@ namespace CalcAgain
             Input = "0";
             return Input;
         }
-
-
-
-
     }
 }
