@@ -10,8 +10,10 @@ namespace CalcAgainTests
         public void UpdateInputTest()
         {
             //Given
-            InputReader inputReader = new InputReader();
-            inputReader.Input = "123";
+            InputReader inputReader = new InputReader
+            {
+                Input = "123"
+            };
             string enteredInput = "4";
 
             //When
@@ -25,23 +27,27 @@ namespace CalcAgainTests
         public void TrimmingZeroOnBeginOfInput()
         {
             //Given
-            InputReader inputReader = new InputReader();
-            inputReader.Input = "0123";
+            InputReader inputReader = new InputReader
+            {
+                Input = "0"
+            };
             string enteredInput = "4";
 
             //When
             inputReader.UpdateInput(enteredInput);
 
             //Then
-            Assert.AreEqual("1234", inputReader.Input);
+            Assert.AreEqual("4", inputReader.Input);
         }
 
         [TestMethod]
         public void AddCommaToInputTest()
         {
             //Given
-            InputReader inputReader = new InputReader();
-            inputReader.Input = "123";
+            InputReader inputReader = new InputReader
+            {
+                Input = "123"
+            };
 
             //When
             inputReader.AddCommaToInput();

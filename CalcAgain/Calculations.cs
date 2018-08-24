@@ -10,14 +10,12 @@ namespace CalcAgain
     {
         public string Calculate(InputStorage input)
         {
-            string validationMessage = Validate(input.Action, input.RValue);
+            string validationMessage = ValidateDividingByZero(input.Action, input.RValue);
 
             if (!string.IsNullOrEmpty(validationMessage))
-            {
                 return validationMessage;
-            }
 
-            switch (input.Action)
+                switch (input.Action)
             {
                 case Action.Add:
                     input.LValue += input.RValue;
@@ -35,10 +33,10 @@ namespace CalcAgain
             return input.LValue.ToString();
         }
 
-        private string Validate(Action action, double rValue)
+        private string ValidateDividingByZero(Action action, double rValue)
         {
             if (action == Action.Divide && rValue == 0)
-                return "Oh! You can't divide by 0!";
+                return Translations.DivideByZeroMessage;
             else
                 return null;
         }

@@ -78,7 +78,7 @@ namespace CalcAgainTests
             //When
             var result = calculations.Calculate(inputStorage);
             //Then
-            Assert.AreEqual("Oh! You can't divide by 0!", result);
+            Assert.AreEqual("You can't divide by 0!", result);
         }
     }
 }

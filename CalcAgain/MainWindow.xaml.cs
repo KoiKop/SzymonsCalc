@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Threading;
 using System.Windows;
 
@@ -79,36 +80,56 @@ namespace CalcAgain
             MainDisplay.Content = inputReader.ChangePlusMinusSign();
         }
 
+
+
+
+
+
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-           inputStorage.StoreValue(inputReader);
-           inputStorage.SetAction(Action.Add);
+            inputStorage.StoreValue(inputReader);
+            MainDisplay.Content = calculations.Calculate(inputStorage);
+            inputReader.ClearInput();
+            inputStorage.SetAction(Action.Add);
         }
 
         private void ButtonExtract_Click(object sender, RoutedEventArgs e)
         {
             inputStorage.StoreValue(inputReader);
+            MainDisplay.Content = calculations.Calculate(inputStorage);
+            inputReader.ClearInput();
             inputStorage.SetAction(Action.Extract);
         }
 
         private void ButtonMultiple_Click(object sender, RoutedEventArgs e)
         {
             inputStorage.StoreValue(inputReader);
+            MainDisplay.Content = calculations.Calculate(inputStorage);
+            inputReader.ClearInput();
             inputStorage.SetAction(Action.Multiple);
         }
 
         private void ButtonDivide_Click(object sender, RoutedEventArgs e)
         {
             inputStorage.StoreValue(inputReader);
+            MainDisplay.Content = calculations.Calculate(inputStorage);
+            inputReader.ClearInput();
             inputStorage.SetAction(Action.Divide);
         }
 
         private void ButtonResult_Click(object sender, RoutedEventArgs e)
         {
-            inputStorage.StoreValue(inputReader);            
+            inputStorage.StoreValue(inputReader);
             MainDisplay.Content = calculations.Calculate(inputStorage);
             inputReader.ClearInput();
         }
+
+        
+
+
+
+
+
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
@@ -121,5 +142,10 @@ namespace CalcAgain
         {
             MainDisplay.Content = inputReader.DeleteLastCharacter();
         }
+    }
+
+    public class DoubleClickValidation
+    {
+
     }
 }
