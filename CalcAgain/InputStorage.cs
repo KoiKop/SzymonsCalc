@@ -15,6 +15,8 @@ namespace CalcAgain
         public InputStorage()
         {
             Action = Action.Initial;
+            LValue = double.NaN;
+            RValue = double.NaN;
         }
 
         public void StoreValue(InputReader inputReader)
@@ -22,15 +24,31 @@ namespace CalcAgain
             if (Action == Action.Initial)
             {
                 LValue = Convert.ToDouble(inputReader.Input);
-                inputReader.ClearInput();
+                inputReader.SetInputToNull();
             }
             else
-                RValue = Convert.ToDouble(inputReader.Input);
+            {
+                if (!String.IsNullOrEmpty(inputReader.Input))
+                {
+                    RValue = Convert.ToDouble(inputReader.Input);
+                }
+            }
+
         }
 
         public void SetAction(Action action)
         {
             Action = action;
+        }
+
+        public void SetLValueToNaN()
+        {
+            LValue = double.NaN;
+        }
+
+        public void SetRValueToNaN()
+        {
+            RValue = double.NaN;
         }
     }
 }

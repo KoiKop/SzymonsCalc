@@ -31,6 +31,9 @@ namespace CalcAgain
  
         public string AddCommaToInput()
         {
+            if (Input == null)
+                Input = String.Empty;
+
             if (!Input.Contains(Configuration.DecimalSeparator))
                 return UpdateInput(Configuration.DecimalSeparator);
             else
@@ -39,6 +42,9 @@ namespace CalcAgain
 
         public string ChangePlusMinusSign()
         {
+            if (Input == null)
+                Input = String.Empty;
+
             if (Input.Contains("-"))
                 Input = Input.Remove(0, 1);
             else
@@ -58,10 +64,14 @@ namespace CalcAgain
             return Input;
         }
 
-        public string ClearInput()
+        public string SetInputToNull()
         {
-            Input = "0";
-            return Input;
+            return Input = null;
+        }
+
+        public string SetInputToZero()
+        {
+            return Input = "0";
         }
     }
 }

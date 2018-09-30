@@ -21,13 +21,13 @@ namespace CalcAgain
                     input.LValue += input.RValue;
                     break;
                 case Action.Extract:
-                    input.LValue = input.LValue - input.RValue;
+                    input.LValue -= input.RValue;
                     break;
                 case Action.Multiple:
-                    input.LValue = input.LValue * input.RValue;
+                    input.LValue *= input.RValue;
                     break;
                 case Action.Divide:
-                    input.LValue = input.LValue / input.RValue;
+                    input.LValue /= input.RValue;
                     break;
             }
             return input.LValue.ToString();

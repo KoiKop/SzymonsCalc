@@ -11,14 +11,16 @@ namespace CalcAgain
     public partial class MainWindow : Window
     {
         InputReader inputReader = new InputReader();
-        Calculations calculations = new Calculations();
         InputStorage inputStorage = new InputStorage();
+        Calculations calculations = new Calculations();
 
         public MainWindow()
         {
             InitializeComponent();
             MainDisplay.Content = inputReader.Input;
         }
+
+        #region 0-9 buttons input update
 
         private void ButtonValue0_Click(object sender, RoutedEventArgs e)
         {
@@ -70,6 +72,8 @@ namespace CalcAgain
             MainDisplay.Content = inputReader.UpdateInput("9");
         }
 
+        #endregion
+
         private void ButtonComma_Click(object sender, RoutedEventArgs e)
         {
             MainDisplay.Content = inputReader.AddCommaToInput();
@@ -81,47 +85,54 @@ namespace CalcAgain
         }
 
 
-
-
-
+        #region Math operations buttons
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            inputStorage.StoreValue(inputReader);
-            MainDisplay.Content = calculations.Calculate(inputStorage);
-            inputReader.ClearInput();
-            inputStorage.SetAction(Action.Add);
+            MathOperationsButtonsActions(Action.Add);
         }
 
         private void ButtonExtract_Click(object sender, RoutedEventArgs e)
         {
-            inputStorage.StoreValue(inputReader);
-            MainDisplay.Content = calculations.Calculate(inputStorage);
-            inputReader.ClearInput();
-            inputStorage.SetAction(Action.Extract);
+            MathOperationsButtonsActions(Action.Extract);
         }
 
         private void ButtonMultiple_Click(object sender, RoutedEventArgs e)
         {
-            inputStorage.StoreValue(inputReader);
-            MainDisplay.Content = calculations.Calculate(inputStorage);
-            inputReader.ClearInput();
-            inputStorage.SetAction(Action.Multiple);
+            MathOperationsButtonsActions(Action.Multiple);
         }
 
         private void ButtonDivide_Click(object sender, RoutedEventArgs e)
         {
+            MathOperationsButtonsActions(Action.Divide);
+        }
+
+        #endregion
+
+        private void MathOperationsButtonsActions(Action action)
+        {
             inputStorage.StoreValue(inputReader);
-            MainDisplay.Content = calculations.Calculate(inputStorage);
-            inputReader.ClearInput();
-            inputStorage.SetAction(Action.Divide);
+
+            if (!Double.IsNaN(inputStorage.RValue))
+            {
+                MainDisplay.Content = calculations.Calculate(inputStorage);
+                inputStorage.SetRValueToNaN();
+                inputReader.SetInputToNull();
+            }
+            
+            inputStorage.SetAction(action);
         }
 
         private void ButtonResult_Click(object sender, RoutedEventArgs e)
         {
             inputStorage.StoreValue(inputReader);
-            MainDisplay.Content = calculations.Calculate(inputStorage);
-            inputReader.ClearInput();
+
+            if (!Double.IsNaN(inputStorage.RValue))
+            {
+                MainDisplay.Content = calculations.Calculate(inputStorage);
+                inputStorage.SetRValueToNaN();
+                inputReader.SetInputToNull();
+            }
         }
 
         
@@ -129,23 +140,20 @@ namespace CalcAgain
 
 
 
-
-
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
             inputStorage.SetAction(Action.Initial);
-            inputReader.ClearInput();
+            inputReader.SetInputToZero();
             MainDisplay.Content = inputReader.Input;
         }
 
         private void ButtonBackspace_Click(object sender, RoutedEventArgs e)
         {
-            MainDisplay.Content = inputReader.DeleteLastCharacter();
+            if (!String.IsNullOrEmpty(inputReader.Input))
+            {
+                MainDisplay.Content = inputReader.DeleteLastCharacter();
+            }
+            
         }
-    }
-
-    public class DoubleClickValidation
-    {
-
     }
 }
